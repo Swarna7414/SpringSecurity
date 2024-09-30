@@ -31,9 +31,21 @@ public class CustomController {
         return ResponseEntity.ok(Message);
     }
     @PreAuthorize("hasRole('USER')")
-    @GetMapping("/puku")
+    @GetMapping("/user")
     public String getonlyauth(@RequestParam String word){
         return "Hia ra "+word;
+    }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/Admin")
+    public String getAdmin(@RequestParam String word){
+        return "This is admin"+word;
+    }
+
+    @GetMapping("/anyone")
+    public String authanyone(@RequestParam String word){
+        return "THis is anyone"+word;
     }
 
 }
