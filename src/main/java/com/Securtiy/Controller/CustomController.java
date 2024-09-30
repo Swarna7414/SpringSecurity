@@ -1,23 +1,39 @@
 package com.Securtiy.Controller;
 
+import com.Securtiy.DTO.CustomUserDTO;
+import com.Securtiy.Service.CustomService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/sec")
+@RequestMapping("/security")
 public class CustomController {
 
-    @GetMapping("/love")
-    public String getlove(){
-        return "I Love You";
-    }
+    @Autowired
+    CustomService customService;
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/pre")
-    public String getpre(){
-        return "Preethi loving someone";
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    private static final Logger logger= LoggerFactory.getLogger(CustomController.class);
+
+
+    @PostMapping("/registeruser")
+    public ResponseEntity<Object> RegisterUser(@RequestBody CustomUserDTO user){
+
+        String Message= customService.registerFirsttimeUser(user);
+
+        return ResponseEntity.ok(Message);
+    }
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/puku")
+    public String getonlyauth(@RequestParam String word){
+        return "Hia ra "+word;
     }
 
 }
