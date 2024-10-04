@@ -24,6 +24,7 @@ import javax.sql.DataSource;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    // added customUserDetailasservice which we created in the service method.
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 
