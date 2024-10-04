@@ -27,6 +27,9 @@ public class SecurityConfig {
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 
+    /*Go to the SpringBootWebSecurityConfiguration class in the springsecurity or search for this class in intellij, 
+    and go to the defaultSecurityFilterChain just obserce the method, which is default and do your changes*/
+
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> {
@@ -44,11 +47,15 @@ public class SecurityConfig {
         return (SecurityFilterChain) http.build();
     }
 
+
+    // password Encoder is used to encode the password which we store in DB
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // This class is used for Authentaction.
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception{
@@ -59,6 +66,10 @@ public class SecurityConfig {
 
 
 }
+
+
+
+
 
 
 /// This is the doe for Using IN Auth Memore : )
