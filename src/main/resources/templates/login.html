@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="video-container">
+    <video autoplay muted loop class="background-video">
+        <source src="../static/Media/background.mp4" type="video/mp4"> &lt;!&ndash; Replace with your MP4 file path &ndash;&gt;
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="johndoe@gmail.com" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+        <button type="submit" class="login-btn">Login</button>
+        <p class="signup-text">Don't have an account? <a href="#">Signup</a></p>
+    </form>
+    <div class="divider">or</div>
+    <button class="google-login">
+        <i class="fa-brands fa-google" style="color: #4285F4; margin-right: 10px;"></i>
+        Login with Google
+    </button>
+</div>
+</body>
+</html>
